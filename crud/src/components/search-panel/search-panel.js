@@ -1,3 +1,4 @@
+import AppFilter from '../app-filter/app-filter';
 import './search-panel.css';
 
 function SearchPanel() {
@@ -8,6 +9,8 @@ function SearchPanel() {
         className="form-control search-input"
         placeholder="Search..."
       />
+
+      <AppFilter />
     </div>
   );
 }
