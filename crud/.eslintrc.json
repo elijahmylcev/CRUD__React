@@ -30,7 +30,7 @@
         "html": "ignore",
         "custom": "ignore",
         "explicitSpread": "enforce",
-        "exceptions": ["Image", "img"]
-    }]
+        "exceptions": ["Image", "img"]}],
+        "no-console": "off"
   }
 }

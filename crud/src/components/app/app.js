@@ -6,9 +6,15 @@ import EmployeesAddForm from '../employees-add-form/employees-add-form';
 
 function App() {
   const data = [
-    { name: 'John S.', salary: 800, increase: false },
-    { name: 'Alex M.', salary: 3000, increase: true },
-    { name: 'Peter C.', salary: 2740, increase: false },
+    {
+      name: 'John S.', salary: 800, increase: false, id: 1,
+    },
+    {
+      name: 'Alex M.', salary: 3000, increase: true, id: 2,
+    },
+    {
+      name: 'Peter C.', salary: 2740, increase: false, id: 3,
+    },
   ];
 
   return (
