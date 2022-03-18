@@ -5,8 +5,7 @@ import EmployeesListItem from '../employees-list-item/employees-list-item';
 function EmployeesList({ data }) {
   const elements = data.map((item) => (
     <EmployeesListItem
-      name={item.name}
-      salary={item.salary}
+      {...item}
       key={item.salary}
     />
   ));

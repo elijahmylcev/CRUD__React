@@ -2,8 +2,13 @@ import './employees-list-item.css';
 import PropTypes from 'prop-types';
 
 function EmployeesListItem({ ...props }) {
+  let classNames = 'list-group-item d-flex justify-content-between';
+  if (props.increase) {
+    classNames += ' increase';
+  }
+
   return (
-    <li className="list-group-item d-flex justify-content-between">
+    <li className={classNames}>
       <span className="list-group-item-label">
         {' '}
         {props.name}
@@ -33,6 +38,7 @@ function EmployeesListItem({ ...props }) {
 EmployeesListItem.propTypes = {
   name: PropTypes.string.isRequired,
   salary: PropTypes.number.isRequired,
+  increase: PropTypes.bool.isRequired,
 };
 
 export default EmployeesListItem;
