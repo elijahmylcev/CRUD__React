@@ -24,6 +24,8 @@
       "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
       "no-unused-vars": ["warn", { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }],
       "linebreak-style": ["error", "windows"],
-      "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 0 }]
+      "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 0 }],
+      "react/destructuring-assignment": [1, "always"],
+      "react/jsx-props-no-spreading": 1
   }
 }
