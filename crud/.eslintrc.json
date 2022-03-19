@@ -31,6 +31,11 @@
         "custom": "ignore",
         "explicitSpread": "enforce",
         "exceptions": ["Image", "img"]}],
+        "react/prefer-stateless-function": [0],
+        "max-classes-per-file": [
+            "error",
+            3
+        ],
         "no-console": "off"
   }
 }
