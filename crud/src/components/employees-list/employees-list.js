@@ -2,13 +2,14 @@ import './employees-list.css';
 import PropTypes from 'prop-types';
 import EmployeesListItem from '../employees-list-item/employees-list-item';
 
-function EmployeesList({ data }) {
+function EmployeesList({ data, onDelete }) {
   const elements = data.map((item) => {
     const { id, ...itemProps } = item;
     return (
       <EmployeesListItem
         {...itemProps}
         key={id}
+        onDelete={() => onDelete(id)}
       />
     );
   });
@@ -22,6 +23,7 @@ function EmployeesList({ data }) {
 
 EmployeesList.propTypes = {
   data: PropTypes.arrayOf.isRequired,
+  onDelete: PropTypes.func.isRequired,
 };
 
 export default EmployeesList;

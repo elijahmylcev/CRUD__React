@@ -22,9 +22,9 @@ class EmployeesAddForm extends Component {
       <div className="app-add-form">
         <h3>Добавьте нового сотрудника</h3>
         <div>
+          {'--->'}
           {name}
           {' '}
-          {'--->'}
           {' '}
           {salary}
         </div>
