@@ -24,9 +24,15 @@ class App extends Component {
   }
 
   deleteItem = (id) => {
-    this.setState(({ data }) => {
+    this.setState(({ data }) => ({
+      // Следуя принципу иммутабельности
 
-    });
+      // const index = data.findIndex((element) => element.id === +id);
+      // const before = data.slice(0, index);
+      // const after = data.slice(index + 1);
+      // const newArr = [...before, ...after];
+      data: data.filter((item) => item.id !== id),
+    }));
   };
 
   render() {
