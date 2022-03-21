@@ -1,6 +1,5 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
-import AppFilter from '../app-filter/app-filter';
 import './search-panel.css';
 
 class SearchPanel extends Component {
@@ -32,7 +31,6 @@ class SearchPanel extends Component {
           onChange={this.changeTerm}
         />
 
-        <AppFilter />
       </div>
     );
   }

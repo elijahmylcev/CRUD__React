@@ -2,6 +2,7 @@ import { Component } from 'react';
 import './app.css';
 import AppInfo from '../app-info/app-info';
 import SearchPanel from '../search-panel/search-panel';
+import AppFilter from '../app-filter/app-filter';
 import EmployeesList from '../employees-list/employees-list';
 import EmployeesAddForm from '../employees-add-form/employees-add-form';
 
@@ -21,6 +22,7 @@ class App extends Component {
         },
       ],
       term: '',
+      filter: 'all',
     };
   }
 
@@ -87,8 +89,20 @@ class App extends Component {
     this.setState({ term });
   };
 
+  filterPost = () => {
+    const { data, filter } = this.state;
+    switch (filter) {
+      case 'rise':
+        return data.filter((item) => item.rise);
+      case 'moreThen1000':
+        return data.filter((item) => item.salary > 1000);
+      default:
+        return data;
+    }
+  };
+
   render() {
-    const { data, term } = this.state;
+    const { data, term, filter } = this.state;
 
     // Rise up employees
     const riseUpEmployees = data.filter((item) => item.increase);
@@ -97,12 +111,13 @@ class App extends Component {
       numberEmployees: data.length,
       riseUpEmployees: riseUpEmployees.length,
     };
-
-    const visibleData = this.searchEmp(data, term);
+    // Комбинированная фильтрация
+    const visibleData = this.filterPost(this.searchEmp(data, term));
     return (
       <div className="app">
         <AppInfo information={information} />
         <SearchPanel onUpdateSearch={this.onUpdateSearch} />
+        <AppFilter filter={filter} />
         <EmployeesList
           data={visibleData}
           onDelete={this.deleteItem}
