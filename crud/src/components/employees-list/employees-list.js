@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import EmployeesListItem from '../employees-list-item/employees-list-item';
 
 function EmployeesList({
-  data, onDelete, onToggleIncrease, onToggleRise,
+  data, onDelete, onToggleProp,
 }) {
   const elements = data.map((item) => {
     const { id, ...itemProps } = item;
@@ -12,8 +12,7 @@ function EmployeesList({
         {...itemProps}
         key={id}
         onDelete={() => onDelete(id)}
-        onToggleIncrease={() => onToggleIncrease(id)}
-        onToggleRise={() => onToggleRise(id)}
+        onToggleProp={(e) => onToggleProp(id, e.currentTarget.getAttribute('data-toggle'))}
       />
     );
   });
@@ -28,8 +27,7 @@ function EmployeesList({
 EmployeesList.propTypes = {
   data: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
-  onToggleIncrease: PropTypes.func.isRequired,
-  onToggleRise: PropTypes.func.isRequired,
+  onToggleProp: PropTypes.func.isRequired,
 };
 
 export default EmployeesList;

@@ -50,7 +50,7 @@ class App extends Component {
     });
   };
 
-  onToggleIncrease = (id) => {
+  onToggleProp = (id, prop) => {
     // this.setState(({ data }) => {
     //   const index = data.findIndex((elem) => elem.id === id);
     //   const old = data[index];
@@ -64,7 +64,7 @@ class App extends Component {
       data: data.map((item) => {
         if (item.id === id) {
           return {
-            ...item, increase: !item.increase,
+            ...item, [prop]: !item[prop],
           };
         }
         return item;
@@ -72,15 +72,15 @@ class App extends Component {
     }));
   };
 
-  onToggleRise = (id) => {
-    console.log(this);
-    console.log(`Rise this ${id}`);
-  };
-
   render() {
     const { data } = this.state;
+
+    // Rise up employees
+    const riseUpEmployees = data.filter((item) => item.increase);
+
     const information = {
       numberEmployees: data.length,
+      riseUpEmployees: riseUpEmployees.length,
     };
     return (
       <div className="app">
@@ -89,8 +89,7 @@ class App extends Component {
         <EmployeesList
           data={data}
           onDelete={this.deleteItem}
-          onToggleIncrease={this.onToggleIncrease}
-          onToggleRise={this.onToggleRise}
+          onToggleProp={this.onToggleProp}
         />
         <EmployeesAddForm onAdd={this.addItem} />
       </div>

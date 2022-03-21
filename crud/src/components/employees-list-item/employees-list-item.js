@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 function EmployeesListItem(props) {
   const {
-    name, salary, onDelete, onToggleIncrease, onToggleRise, increase, rise,
+    name, salary, onDelete, onToggleProp, increase, rise,
   } = props;
   let classNames = 'list-group-item d-flex justify-content-between';
 
@@ -18,10 +18,11 @@ function EmployeesListItem(props) {
     <li className={classNames}>
       <span
         className="list-group-item-label"
-        onClick={onToggleRise}
+        onClick={onToggleProp}
         role="button"
         aria-hidden="true"
         tabIndex={0}
+        data-toggle="rise"
       >
         {name}
       </span>
@@ -30,7 +31,8 @@ function EmployeesListItem(props) {
         <button
           type="button"
           className="btn-cookie btn-sm "
-          onClick={onToggleIncrease}
+          onClick={onToggleProp}
+          data-toggle="increase"
         >
           <i className="fas fa-cookie" />
         </button>
@@ -52,8 +54,7 @@ EmployeesListItem.propTypes = {
   name: PropTypes.string.isRequired,
   salary: PropTypes.number.isRequired,
   onDelete: PropTypes.func.isRequired,
-  onToggleIncrease: PropTypes.func.isRequired,
-  onToggleRise: PropTypes.func.isRequired,
+  onToggleProp: PropTypes.func.isRequired,
   increase: PropTypes.bool.isRequired,
   rise: PropTypes.bool.isRequired,
 };
