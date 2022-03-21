@@ -79,9 +79,12 @@ class App extends Component {
 
   render() {
     const { data } = this.state;
+    const information = {
+      numberEmployees: data.length,
+    };
     return (
       <div className="app">
-        <AppInfo />
+        <AppInfo information={information} />
         <SearchPanel />
         <EmployeesList
           data={data}
