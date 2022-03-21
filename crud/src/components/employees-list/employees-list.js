@@ -22,7 +22,7 @@ function EmployeesList({ data, onDelete }) {
 }
 
 EmployeesList.propTypes = {
-  data: PropTypes.arrayOf.isRequired,
+  data: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
 };
 

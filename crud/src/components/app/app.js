@@ -35,6 +35,20 @@ class App extends Component {
     }));
   };
 
+  addItem = (name, salary, id) => {
+    const { data } = this.state;
+    // because type of salary is string
+    const newItem = {
+      name,
+      salary: parseInt(salary, 10),
+      id,
+      increase: false,
+    };
+    this.setState({
+      data: [...data, newItem],
+    });
+  };
+
   render() {
     const { data } = this.state;
     return (
@@ -45,7 +59,7 @@ class App extends Component {
           data={data}
           onDelete={this.deleteItem}
         />
-        <EmployeesAddForm />
+        <EmployeesAddForm onAdd={this.addItem} />
       </div>
     );
   }

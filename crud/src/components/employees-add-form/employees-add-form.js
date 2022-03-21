@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 import './employees-add-form.css';
 
 class EmployeesAddForm extends Component {
@@ -16,6 +17,18 @@ class EmployeesAddForm extends Component {
     });
   };
 
+  addItem = (event) => {
+    const { onAdd } = this.props;
+    const { name, salary } = this.state;
+    const id = Date.now();
+    event.preventDefault();
+    onAdd(name, salary, id);
+    this.setState({
+      name: '',
+      salary: '',
+    });
+  };
+
   render() {
     const { name, salary } = this.state;
     return (
@@ -30,6 +43,7 @@ class EmployeesAddForm extends Component {
         </div>
         <form
           className="add-form d-flex"
+          onSubmit={this.addItem}
         >
           <input
             type="text"
@@ -59,5 +73,9 @@ class EmployeesAddForm extends Component {
     );
   }
 }
+
+EmployeesAddForm.propTypes = {
+  onAdd: PropTypes.func.isRequired,
+};
 
 export default EmployeesAddForm;
