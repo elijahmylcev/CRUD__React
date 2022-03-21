@@ -36,6 +36,7 @@
             "error",
             3
         ],
-        "no-console": "off"
+        "no-console": "off",
+        "class-methods-use-this": ["error", { "exceptMethods": ["searchEmp"] }]
   }
 }

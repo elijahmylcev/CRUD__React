@@ -18,15 +18,17 @@ class EmployeesAddForm extends Component {
   };
 
   addItem = (event) => {
+    event.preventDefault();
     const { onAdd } = this.props;
     const { name, salary } = this.state;
-    const id = Date.now();
-    event.preventDefault();
-    onAdd(name, salary, id);
-    this.setState({
-      name: '',
-      salary: '',
-    });
+    if (name.length >= 3 && salary > 100) {
+      const id = Date.now();
+      onAdd(name, salary, id);
+      this.setState({
+        name: '',
+        salary: '',
+      });
+    }
   };
 
   render() {
@@ -34,17 +36,11 @@ class EmployeesAddForm extends Component {
     return (
       <div className="app-add-form">
         <h3>Добавьте нового сотрудника</h3>
-        <div>
-          {'--->'}
-          {name}
-          {' '}
-          {' '}
-          {salary}
-        </div>
         <form
           className="add-form d-flex"
           onSubmit={this.addItem}
         >
+
           <input
             type="text"
             className="form-control new-post-label"
