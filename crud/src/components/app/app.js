@@ -77,11 +77,9 @@ class App extends Component {
 
   searchEmp = () => {
     const { data, term } = this.state;
-
     if (term.length === 0) {
       return data;
     }
-
     return data.filter((item) => item.name.indexOf(term) > -1);
   };
 
@@ -89,20 +87,24 @@ class App extends Component {
     this.setState({ term });
   };
 
-  filterPost = () => {
-    const { data, filter } = this.state;
+  filterPost = (items) => {
+    const { filter } = this.state;
     switch (filter) {
       case 'rise':
-        return data.filter((item) => item.rise);
+        return items.filter((item) => item.rise);
       case 'moreThen1000':
-        return data.filter((item) => item.salary > 1000);
+        return items.filter((item) => item.salary > 1000);
       default:
-        return data;
+        return items;
     }
   };
 
+  onFilterSelect = (filter) => {
+    this.setState({ filter });
+  };
+
   render() {
-    const { data, term, filter } = this.state;
+    const { data, filter } = this.state;
 
     // Rise up employees
     const riseUpEmployees = data.filter((item) => item.increase);
@@ -112,12 +114,13 @@ class App extends Component {
       riseUpEmployees: riseUpEmployees.length,
     };
     // Комбинированная фильтрация
-    const visibleData = this.filterPost(this.searchEmp(data, term));
+    const termData = this.searchEmp();
+    const visibleData = this.filterPost(termData);
     return (
       <div className="app">
         <AppInfo information={information} />
         <SearchPanel onUpdateSearch={this.onUpdateSearch} />
-        <AppFilter filter={filter} />
+        <AppFilter filter={filter} onFilterSelect={this.onFilterSelect} />
         <EmployeesList
           data={visibleData}
           onDelete={this.deleteItem}

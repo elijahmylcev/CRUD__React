@@ -9,7 +9,7 @@ function AppFilter(props) {
   ];
 
   const buttons = buttonsData.map(({ name, label }) => {
-    const { filter } = props;
+    const { filter, onFilterSelect } = props;
     const active = filter === name;
     const clazz = active ? 'btn-light' : 'btn-outline-light';
     return (
@@ -17,6 +17,7 @@ function AppFilter(props) {
         type="button"
         className={`btn ${clazz}`}
         key={name}
+        onClick={() => onFilterSelect(name)}
       >
         {label}
       </button>
@@ -31,6 +32,7 @@ function AppFilter(props) {
 
 AppFilter.propTypes = {
   filter: PropTypes.string.isRequired,
+  onFilterSelect: PropTypes.func.isRequired,
 };
 
 export default AppFilter;
