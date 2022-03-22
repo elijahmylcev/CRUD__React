@@ -37,6 +37,7 @@
             3
         ],
         "no-console": "off",
-        "class-methods-use-this": ["error", { "exceptMethods": ["searchEmp"] }]
+        "class-methods-use-this": ["error", { "exceptMethods": ["searchEmp"] }],
+        "no-param-reassign": ["error", { "props": false }]
   }
 }
