@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
-import './employees-add-form.css';
+// import './employees-add-form.css';
+import './employees-add-form.scss';
 
 class EmployeesAddForm extends Component {
   constructor(props) {
